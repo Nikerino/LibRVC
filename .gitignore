@@ -1,0 +1,8 @@
+.checkpoints
+venv
+*.pth
+*.index
+*.wav
+
+__pycache__
+*.pyc
