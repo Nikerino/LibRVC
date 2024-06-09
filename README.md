@@ -2,7 +2,9 @@
 An easy-to-use fork of the [Retrieval-based Voice Conversion project](https://github.com/RVC-Project/Retrieval-based-Voice-Conversion).
 
 > [!NOTE]
-> I am NOT the original creator of RVC. The original project can be found [here](https://github.com/RVC-Project).
+> I am NOT the original creator of RVC. The original project can be found [here](https://github.com/RVC-Project). All work should be attributed to them.
+
+For an implementation that provides more configuration options, check out [rvc-python](https://github.com/daswer123/rvc-python)
 
 I created this fork because the original code for RVC is pretty awkward to integrate into projects. This library should hopefully make that process simpler for other developers by providing:
 1. A dirt simple API for converting voices.
@@ -27,8 +29,16 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 from librvc import RVC
 import soundfile as sf
 
-rvc = RVC()
+rvc = RVC(model_dir='.checkpoints')
 
 data, fs = rvc.convert('speaker.pth', 'speaker.index', 'source.wav', pitch_shift=6)
 sf.write('out.wav', data, fs)
 ```
+
+## Limitations
+
+* Single audio file conversions only
+* Only customization provided is pitch shifting
+* Only uses RVMPE for feature extraction
+
+Feel free to open up PRs to expand on any of these. For my use-cases, this is plenty.
